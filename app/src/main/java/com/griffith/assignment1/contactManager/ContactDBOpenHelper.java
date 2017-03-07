@@ -19,16 +19,16 @@ public class ContactDBOpenHelper extends SQLiteOpenHelper {
 
     private static final String create_table = "create table if not exists contact(" +
             "ID integer primary key autoincrement, " +
-            "NAME string," +
+            "NAME string, " +
             "HOME_PHONE string, " +
-            "MOBILE_PHONE string" +
+            "MOBILE_PHONE string, " +
             "EMAIL string" +
             ")";
     private static final String drop_table = "drop table contact";
 
     public ContactDBOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
-        Log.d(TAG, "Constructor");
+        Log.d(TAG, "Constructor");;
     }
 
     @Override
@@ -50,7 +50,8 @@ public class ContactDBOpenHelper extends SQLiteOpenHelper {
         Cursor cursor = sqLiteDatabase.query(TABLE, null, null, null, null, null, "NAME");
         cursor.moveToFirst();
         for (int i = 0; i < cursor.getCount(); ++i){
-            contacts.add(new Contact(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3)));
+            contacts.add(new Contact(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4)));
+            cursor.moveToNext();
         }
         return contacts;
     }

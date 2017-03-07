@@ -5,6 +5,7 @@ package com.griffith.assignment1.contactManager;
  */
 
 public class Contact {
+    private int id;
     private String name;
     private String home_phone;
     private String mobile_phone;
@@ -14,11 +15,20 @@ public class Contact {
         this.name = name;
     }
 
-    public Contact(String name, String home_phone, String mobile_phone, String email) {
+    public Contact(int id, String name, String home_phone, String mobile_phone, String email) {
+        this.id = id;
         this.name = name;
         this.home_phone = home_phone;
         this.mobile_phone = mobile_phone;
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -56,7 +66,8 @@ public class Contact {
     @Override
     public String toString() {
         return "Contact{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", home_phone='" + home_phone + '\'' +
                 ", mobile_phone='" + mobile_phone + '\'' +
                 ", email='" + email + '\'' +
