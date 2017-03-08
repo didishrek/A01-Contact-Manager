@@ -4,4 +4,5 @@
     <string name="title_edit_contact">Edit Contact</string>
 
     <string name="button_add_contact">Add Contact</string>
+    <string name="validate_new_contact">Add Contact</string>
 </resources>

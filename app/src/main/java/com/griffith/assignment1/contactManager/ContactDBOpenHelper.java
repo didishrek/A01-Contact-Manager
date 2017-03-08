@@ -53,6 +53,7 @@ public class ContactDBOpenHelper extends SQLiteOpenHelper {
             contacts.add(new Contact(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4)));
             cursor.moveToNext();
         }
+        cursor.close();
         return contacts;
     }
 
@@ -61,7 +62,9 @@ public class ContactDBOpenHelper extends SQLiteOpenHelper {
         String[] where = { String.valueOf(id) };
         Cursor cursor = sqLiteDatabase.query(TABLE, null, "id = ?",  where, null, null, null);
         cursor.moveToFirst();
-        return new Contact(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+        Contact c = new Contact(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+        cursor.close();
+        return c;
     }
 
     //add a contact
@@ -72,10 +75,15 @@ public class ContactDBOpenHelper extends SQLiteOpenHelper {
         cv.put("MOBILE_PHONE", contact.getMobile_phone());
         cv.put("EMAIL", contact.getEmail());
         sqLiteDatabase.insert(TABLE, null, cv);
+        Log.v(TAG, "Contact added");
     }
 
     //check if contact already exist
 
-    //remove contact
 
+
+    //remove contact
+    public boolean rmContact(SQLiteDatabase sqLiteDatabase, int id){
+        return sqLiteDatabase.delete(TABLE, "id = " + id, null) > 0;
+    }
 }

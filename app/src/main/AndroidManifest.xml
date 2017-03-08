@@ -17,8 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.EditContact"
-            android:label="@string/title_edit_contact"/>
+        <activity
+            android:name=".activities.EditContact"
+            android:label="@string/title_edit_contact" />
+        <activity android:name=".activities.AddContact" />
+        <activity android:name=".activities.ViewContact"></activity>
     </application>
 
 </manifest>
