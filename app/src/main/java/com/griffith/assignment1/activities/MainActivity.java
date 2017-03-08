@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(MainActivity.this, ViewContact.class);
+                Intent intent = new Intent(MainActivity.this, EditContact.class);
                 intent.putExtra("ID_CONTACT", contacts.get(i).getId());
                 startActivity(intent);
             }

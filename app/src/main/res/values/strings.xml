@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Contact Manager</string>
     <string name="main_title">Contacts</string>
-    <string name="title_view_contact">Contact</string>
+    <string name="title_edit_contact">Edit Contact</string>
 
     <string name="button_add_contact">Add Contact</string>
 </resources>

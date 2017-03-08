@@ -17,8 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ViewContact"
-            android:label="@string/title_view_contact"/>
+        <activity android:name=".activities.EditContact"
+            android:label="@string/title_edit_contact"/>
     </application>
 
 </manifest>

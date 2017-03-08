@@ -56,6 +56,14 @@ public class ContactDBOpenHelper extends SQLiteOpenHelper {
         return contacts;
     }
 
+    //get contact by id
+    public Contact getContact(SQLiteDatabase sqLiteDatabase, int id){
+        String[] where = { String.valueOf(id) };
+        Cursor cursor = sqLiteDatabase.query(TABLE, null, "id = ?",  where, null, null, null);
+        cursor.moveToFirst();
+        return new Contact(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+    }
+
     //add a contact
     public void addContact(SQLiteDatabase sqLiteDatabase, Contact contact) throws Exception{
         ContentValues cv = new ContentValues();
