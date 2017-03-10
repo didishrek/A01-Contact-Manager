@@ -36,7 +36,7 @@ public class CustomListAdapter extends ArrayAdapter<Contact> {
 
         TextView contactName = (TextView) rowView.findViewById(R.id.ContactName);
 
-        contactName.setText(contacts.get(position).toString());
+        contactName.setText(contacts.get(position).getName());
         return rowView;
     }
 }

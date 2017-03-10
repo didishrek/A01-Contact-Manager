@@ -53,6 +53,8 @@ public class AddContact extends AppCompatActivity {
                     finish();
                     setResult(RESULT_OK);
                 } catch (Exception e){
+                    Toast toast = Toast.makeText(AddContact.this, e.getMessage(), Toast.LENGTH_SHORT);
+                    toast.show();
                     Log.e("ERROR", e.getMessage());
                 }
             }

@@ -6,33 +6,91 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.griffith.assignment1.activities.AddContact">
-    <EditText
-        android:id="@+id/add_contact_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
 
-    <EditText
-        android:id="@+id/add_contact_home_phone"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/add_contact_mobile_phone"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_person_black_24dp"/>
+
+        <EditText
+            android:id="@+id/add_contact_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:hint="@string/hint_name"
+            />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/add_contact_email"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_phone_black_24dp"/>
+
+        <EditText
+            android:id="@+id/add_contact_home_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:hint="@string/hint_homephone"
+            />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_smartphone_black_24dp"/>
+
+        <EditText
+            android:id="@+id/add_contact_mobile_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:hint="@string/hint_mobilephone"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_email_black_24dp"/>
+        <EditText
+            android:id="@+id/add_contact_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:hint="@string/hint_email"
+            />
+    </LinearLayout>
     <Button
         android:id="@+id/button_add_validate_contact"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/validate_new_contact" />
 </LinearLayout>

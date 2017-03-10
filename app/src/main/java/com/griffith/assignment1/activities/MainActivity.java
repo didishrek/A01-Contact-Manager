@@ -2,6 +2,7 @@ package com.griffith.assignment1.activities;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private ListView list;
-    private Button button_add_contact;
+    private FloatingActionButton button_add_contact;
 
     private ContactDBOpenHelper contactDBOpenHelper;
     private SQLiteDatabase sqLiteDatabase;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         list = (ListView) findViewById(R.id.listView_contact);
         updateList();
 
-        button_add_contact = (Button) findViewById(R.id.button_add_contact);
+        button_add_contact = (FloatingActionButton) findViewById(R.id.button_add_contact);
 
         registerForContextMenu(list);
 

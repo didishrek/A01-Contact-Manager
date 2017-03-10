@@ -2,7 +2,16 @@
     <string name="app_name">Contact Manager</string>
     <string name="main_title">Contacts</string>
     <string name="title_edit_contact">Edit Contact</string>
+    <string name="title_add_contact">Add Contact</string>
+    <string name="title_detail_contact">Detail Contact</string>
 
     <string name="button_add_contact">Add Contact</string>
     <string name="validate_new_contact">Add Contact</string>
+    <string name="validate_edit_contact">Edit Contact</string>
+
+
+    <string name="hint_name">Name</string>
+    <string name="hint_homephone">Home Phone</string>
+    <string name="hint_mobilephone">Mobile Phone</string>
+    <string name="hint_email">Email</string>
 </resources>

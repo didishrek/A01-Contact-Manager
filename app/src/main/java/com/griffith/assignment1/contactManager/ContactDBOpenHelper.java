@@ -69,6 +69,7 @@ public class ContactDBOpenHelper extends SQLiteOpenHelper {
 
     //add a contact
     public void addContact(SQLiteDatabase sqLiteDatabase, Contact contact) throws Exception{
+        isContactValid(sqLiteDatabase, contact, false);
         ContentValues cv = new ContentValues();
         cv.put("NAME", contact.getName());
         cv.put("HOME_PHONE", contact.getHome_phone());
@@ -78,8 +79,47 @@ public class ContactDBOpenHelper extends SQLiteOpenHelper {
         Log.v(TAG, "Contact added");
     }
 
-    //check if contact already exist
+    //update a contact
+    public void editContact(SQLiteDatabase sqLiteDatabase, Contact contact) throws Exception{
+        isContactValid(sqLiteDatabase, contact, true);
+        String strFilter = "ID =" + contact.getId();
+        ContentValues cv = new ContentValues();
+        cv.put("NAME", contact.getName());
+        cv.put("HOME_PHONE", contact.getHome_phone());
+        cv.put("MOBILE_PHONE", contact.getMobile_phone());
+        cv.put("EMAIL", contact.getEmail());
+        sqLiteDatabase.update(TABLE, cv, strFilter, null);
+    }
 
+
+    //check if contact already exist
+    public void isContactValid(SQLiteDatabase sqLiteDatabase, Contact contact, Boolean forupdate) throws Exception{
+        if (contact.getName().isEmpty())
+            throw new Exception("Contact name cannot be empty");
+        if (!contact.getEmail().isEmpty())
+            if (!contact.getEmail().matches("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]+)\\])"))
+                throw new Exception("That email does not match");
+
+        String[] where = { contact.getName().toLowerCase() };
+        Cursor cursor = sqLiteDatabase.query(TABLE, null, "LOWER(NAME) = ?" ,where, null, null, null);
+        cursor.moveToFirst();
+        Boolean found = false;
+        if (forupdate){
+            for (int i = 0; i < cursor.getCount(); ++i){
+                if (cursor.getInt(0) != contact.getId()) {
+                    found = true;
+                    break;
+                }
+                cursor.moveToNext();
+            }
+        } else {
+            found = (cursor.getCount() > 0);
+        }
+        cursor.close();
+        if (found)
+            throw new Exception("This contact is already registered");
+
+    }
 
 
     //remove contact
