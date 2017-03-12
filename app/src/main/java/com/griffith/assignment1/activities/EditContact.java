@@ -43,7 +43,6 @@ public class EditContact extends AppCompatActivity {
 
         int id_contact = getIntent().getIntExtra("ID_CONTACT", -1);
         contact = contactDBOpenHelper.getContact(sqLiteDatabase, id_contact);
-        Log.d("TAG", contact.toString());
 
         editName.setText(contact.getName());
         editHomePhone.setText(contact.getHome_phone());

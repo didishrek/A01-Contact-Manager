@@ -28,20 +28,17 @@ public class ContactDBOpenHelper extends SQLiteOpenHelper {
 
     public ContactDBOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
-        Log.d(TAG, "Constructor");;
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(create_table);
-        Log.d(TAG, "onCreate");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int version_old, int version_new) {
         sqLiteDatabase.execSQL(drop_table);
         sqLiteDatabase.execSQL(create_table);
-        Log.d(TAG, "onUpgrade");
     }
 
     //get all contacts

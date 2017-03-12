@@ -11,10 +11,6 @@ public class Contact {
     private String mobile_phone;
     private String email;
 
-    public Contact(String name) {
-        this.name = name;
-    }
-
     public Contact(int id, String name, String home_phone, String mobile_phone, String email) {
         this.id = id;
         this.name = name;
