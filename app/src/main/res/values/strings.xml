@@ -14,4 +14,9 @@
     <string name="hint_homephone">Home Phone</string>
     <string name="hint_mobilephone">Mobile Phone</string>
     <string name="hint_email">Email</string>
+
+
+    <string name="title_context_menu">Select an action</string>
+    <string name="edit_context_menu">Edit</string>
+    <string name="delete_context_menu">Delete</string>
 </resources>

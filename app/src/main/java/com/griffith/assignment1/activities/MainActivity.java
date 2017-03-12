@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
@@ -70,21 +71,22 @@ public class MainActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
     {
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.setHeaderTitle("Select The Action");
-        menu.add(0, v.getId(), 0, "Edit");
-        menu.add(0, v.getId(), 0, "Delete");
+        menu.setHeaderTitle(R.string.title_context_menu);
+        menu.add(0, v.getId(), 0, R.string.edit_context_menu);
+        menu.add(0, v.getId(), 0, R.string.delete_context_menu);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item){
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         int selected_item = (int) info.id;
-        if(item.getTitle() == "Edit"){
+        if(item.getTitle().toString().equals("Edit"))
+        {
             Intent intent = new Intent(MainActivity.this, EditContact.class);
             intent.putExtra("ID_CONTACT", contacts.get(selected_item).getId());
             startActivity(intent);
         }
-        else if(item.getTitle() == "Delete"){
+        else if(item.getTitle().toString().equals("Delete")){
             contactDBOpenHelper.rmContact(sqLiteDatabase, contacts.get(selected_item).getId());
             updateList();
         }else{
